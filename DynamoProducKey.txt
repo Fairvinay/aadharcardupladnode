@@ -1,0 +1,7 @@
+Dynamsoft.DBR.BarcodeScanner.organizationID = "100849856";
+// Make sure to call createInstance() after you set Organization ID.
+                    
+
+Dynamsoft.DBR.BarcodeReader.productKeys = "t0068NQAAACwiu6aXm/RiDD7y6oAZlmMZOA5c6n1Gz8g3RyCV8qM7FcX1Yv8iY1GRN+ZerYU/hXcIeg2CIfAJzhsms30pQ40=";
+// Make sure to set the key before you call any other APIs under Dynamsoft.DBR
+                        

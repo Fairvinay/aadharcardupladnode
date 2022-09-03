@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/dynamsoft-javascript-barcode@8.2.5/dist/dbr.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+        // initializes and uses the library
+        let scanner = null;
+        (async () => {
+            scanner = await Dynamsoft.DBR.BarcodeScanner.createInstance();
+            scanner.onFrameRead = results => {
+                if (results.length > 0) console.log(results);
+            };
+            scanner.onUnduplicatedRead = (txt, result) => {
+                alert(txt);
+            };
+            await scanner.show();
+			 $(".lts-license-dialog").css("display","none");
+        })();
+	  $(".lts-license-dialog").css("display","none");
+	  
+    </script>
+</body>
+
+</html>
