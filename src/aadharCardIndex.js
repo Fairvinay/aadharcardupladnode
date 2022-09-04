@@ -1,6 +1,7 @@
 const express = require('express');
 const cluster = require('cluster');
 //const dbr = require('barcode4nodejs');
+const envconfig = require('dotenv').config({ path:__dirname+'/./../.env' })
 
 var ejs = require('ejs');
 var path = require('path');
@@ -16,7 +17,7 @@ const app = express();
 
 const upiIDs  = require('./scrap/scrap');
 
-const PORT = 3000; 
+const PORT = 61749; 
 
 // For MAster process 
 if(cluster.isMaster) {
@@ -41,9 +42,14 @@ else {
            err ? console.log("error is server setup "): 
                 console.log(` Worker ${process.pid} started `);
     });
- 
-   app.use('/css', express.static('css'));
-    app.use('/upload', express.static('upload'));
+  console.log(` __dirname name ${__dirname} `);
+  console.log('env consolelog '+JSON.stringify(envconfig));
+   app.use('/localcss', express.static(__dirname +'/css'));
+    app.use('/upload', express.static(__dirname +'/upload'));
+	
+	app.use('/js', express.static(__dirname + '/./../node_modules/bootstrap/dist/js'));
+    app.use('/jquery', express.static(__dirname + '/./../node_modules/jquery/dist'));
+    app.use('/css', express.static(__dirname + '/./../node_modules/bootstrap/dist/css'));
    /************************* EEXPRESSS SETIING the VIEW ENNINGE ************ */
     //Notice //set express view engine to ejs
     app.set("view engine", "ejs");

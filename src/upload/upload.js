@@ -7,10 +7,16 @@ function readURL(input) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $('#imageResult')
-                .attr('src', e.target.result);
+	           console.log("upload js readURL called ");
+               $('#imageResult')
+                .attr('src', e.target.result)
+				.css('width', '6.5rem')
+				.css('height', '6.5rem');
+				
+				console.log("upload js file uploaded "+e.target.result);
         };
         reader.readAsDataURL(input.files[0]);
+        
     }
 }
 

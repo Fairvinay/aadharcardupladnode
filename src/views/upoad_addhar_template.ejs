@@ -1,16 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/uploadaddhar.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+	 <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+	  <script src="/jquery/jquery.slim.min.js" crossorigin="anonymous"></script>	
+   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
+	  <script src="/js/bootstrap.min.js"  crossorigin="anonymous"></script>
+
+   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="/localcss/uploadaddhar.css">
  <script src="https://cdn.jsdelivr.net/npm/dynamsoft-javascript-barcode@8.2.5/dist/dbr.js"
       data-productKeys="t0068NQAAACwiu6aXm/RiDD7y6oAZlmMZOA5c6n1Gz8g3RyCV8qM7FcX1Yv8iY1GRN+ZerYU/hXcIeg2CIfAJzhsms30pQ40="></script>
    <!-- https://jsfiddle.net/bootstrapious/8w7a50n2 -->
      <script type="text/javascript">
   
+   <!-- display camera in bootstrap Modal
+
+https://stackoverflow.com/questions/70089182/cant-open-webcam-media-device-in-modal-window
+    --> 
+	<!-- STEP Certificate -
+	
+	step ca certificate glaubhanta.example.com glaubhanta.example.com.crt glaubhanta.example.com.key --san glaubhanta.example.com --kty EC --curve P-256 --not-after 8760h
+	
+	
+	curl.exe -LO https://dl.step.sm/s3/cli/ui-cli-install/install-step.ps1; powershell -ExecutionPolicy Bypass -File "install-step.ps1"
+	
+	PS > powershell -ExecutionPolicy Bypass -File "install-step.ps1"
+	
+	step ca bootstrap --ca-url https://teensyweensy-pinkriverdolphin.glaubhanta.ca.smallstep.com --fingerprint 013ee6d7eb8ff92742bf1d4a524249ec306320f7dfb205e4f9374b6b66518802
+	
+	
+	Issue a certificate
+
+Request the Common Name (eg. myservice) and SANs (eg. myservice.internal.mycompany.net) you'd like to include in your certificate. The last two parameters specify the resulting certificate and private key filenames.
+	
+	step ca certificate myservice --san myservice.internal.mycompany.net myservice.crt myservice.key --not-after 24h
+	
+	step certificate inspect --short myservice.crt
+	-->
    
 	</script>
 
@@ -25,8 +53,8 @@
         <h1 class="display-4">Upload your Aadhar Card QR Code </h1>
         <p class="lead mb-0">Fast & Quick </p>
         <p class="mb-5 font-weight-light">Presented By
-            <a href="https://CaarvitaSaakalaa.com" class="text-white">
-                <u>Caarvita Saakalaa</u>
+            <a href="https://SaakalaaCaarvitaa.com" class="text-white">
+                <u>GlaubHanta (Saakalaa Caarvitaa) </u>
             </a>
         </p>
        <!-- <img src="https://bootstrapious.com/i/snippets/sn-img-upload/image.svg" alt="" width="150" class="mb-4">-->
@@ -47,10 +75,18 @@
 
             <!-- Uploaded image area-->
             <p class="font-italic text-white text-center">Verify your Scan Code</p>
+		<div class="row"> <div class="col-sm-4">  
+		     <span class="badge bg-primary text-wrap fs-4 fw-normal">QR CODE  </span>
             <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
+			</div>
+			<div class="col-sm-4"><span class="badge bg-primary fs-4 fw-normal"> CARD DETAILS  </span></div>
+		</div>
+    </div>
+	<div class="row py-4">
+        <div class="col-lg-6 mx-auto">
 	    <p class="font-italic text-white text-center">Scan Code Details </p>
 	    <div class="input-group-append">
-		 <input id="scan" type="file" style="display:hidden;" onchange="scanImage(this);" class="form-control border-0">
+		 <input id="scan" type="file" style="display:none;" onchange="scanImage(this);" >
                     <label for="scan" class="btn btn-light m-0 rounded-pill px-4">
 			 <i class="fa fa-cloud-upload mr-2 text-muted"></i>
 			<small class="text-uppercase font-weight-bold text-muted">Scan Image</small></label>
@@ -60,7 +96,7 @@
         </div>
     </div>
 </div>
-	  <script src="upload/upload.js"></script>
+	  <script src="/upload/upload.js"></script>
 	 <!-- <script src="../../node_modules/dynamsoft-javascript-barcode/dist/dbr.js"></script> -->
      
   <script>
@@ -68,74 +104,84 @@
 	Dynamsoft.DBR.organizationID = "YOUR-ORGANIZATION-ID";
 	//Dynamsoft.DBR.BarcodeScanner.organizationID = "100849856"; // Required.
 	Dynamsoft.DBR.productKeys = "t0068NQAAACwiu6aXm/RiDD7y6oAZlmMZOA5c6n1Gz8g3RyCV8qM7FcX1Yv8iY1GRN+ZerYU/hXcIeg2CIfAJzhsms30pQ40=";
-	
+	Dynamsoft.DBR.BarcodeReader.license = 'DLS2eyJoYW5kc2hha2VDb2RlIjoiMTAxMzA4MDM4LVRYbFhaV0pRY205cVgyUmljZyIsIm9yZ2FuaXphdGlvbklEIjoiMTAxMzA4MDM4IiwiY2hlY2tDb2RlIjotNDE2Nzc2NDd9';
 	//Dynamsoft.DBR.BarcodeScanner.handshakeCode = "A-SPECIFIC-HANDSHAKECODE"; // Optional, if not specified, the default handshake code is used.
 	//Dynamsoft.DBR.BarcodeScanner.sessionPassword = "PASSWORD-TO-PROTECT-YOUR-LICENSE"; // Optional but recomended, use it to protect your license.
 	//Dynamsoft.DBR.BarcodeScanner.licenseServer = ["YOUR-OWN-MAIN-DLS", "YOUR-OWN-STANDBY-DLS"]; //Optional, ignore this line if you are using Dynamsoft-hosting DLS.
         
 	//document.getElementById('upload').addEventListener('change', async function () {
 	
-      function scanImage(input) {
-	 $("#results").empty();
-   	 if (input.files && input.files[0]) {
-  	     var readerFile = new FileReader();
-	    readScanned(input);
+     async function scanImage(input) {
+	   $("#results").empty();
+	    var qrCodeInBytes= "";
+	     let reader = await Dynamsoft.DBR.BarcodeReader.createInstance();
+	     console.log('Dynamsoft reader : '+JSON.stringify(reader));
+		 let qrResults ="";
+   	     if (input.files && input.files[0]) {
+  	      var readerFile = new FileReader();
+	         qrCodeInBytes = await readScanned(input, readerFile);
           }
-      }
-
-      async function readScanned(input) { 
-	 let reader = await Dynamsoft.DBR.BarcodeReader.createInstance();
-	 let results = await reader.decode(input.files[0]);
-            if (results.length == 0) {
+		  qrResults = await reader.decode(input.files[0]);
+		    if (qrResults.length == 0) {
                 $("#results").append('No barcode detected!');
                 return;
             }
-	    var allData = "", adData="";
-            for (let result of results) {
-                console.log(result.barcodeText);
+		 var allData = "", adData="";
+            for (let result of qrResults) {
+			    console.log(" barcode " + JSON.stringify(result));
+                console.log(" barcode " + result.barcodeText);
                 allData+=result.barcodeText
-		adData += readXML(result.barcodeText)
+				adData += readXML(result.barcodeText)
             }
-	     dataList = '<ul class="list-group">'+
+			dataList = '<ul class="list-group">'+
                     '<li class="list-group-item active "><span class="msgTitle">Details </span> </li>';
-	     info = '<div>'
-	     //spanKey = '<span class="msgTitle">' + name + '</span> : ';
-	     //spanValue = '<button class="btn btn-info">' + value + '</button>';
-	     dataListEnd= '</ul>';
-
-             infoEnd =  '</div>';
-	
-	     $("#results").append(info+dataList+adData+dataListEnd+infoEnd);
+			info = '<div>'
+			//spanKey = '<span class="msgTitle">' + name + '</span> : ';
+			//spanValue = '<button class="btn btn-info">' + value + '</button>';
+			dataListEnd= '</ul>';
+            infoEnd =  '</div>';
+	        $("#results").append(info+dataList+adData+dataListEnd+infoEnd);
 
 	    // $("#results").append(dataList + adData);
       }
-      function readXML(xmlText){
-	var dataList="";
-	try {
-                    xmlDoc = $.parseXML(xmlText),
-		    
-			
-                        $(xmlDoc).each(function (i, obj) {
+
+      async function readScanned(input,imagFileReader ) { 
+	     var imageDataInBytes= "";
+		      console.log("reading file "+input.files[0].name);
+	         imagFileReader.onload = function (e) {
+	           console.log("scanImage js readScanned  called ");
+			   imageDataInBytes = e.target.result;
+             };
+			 imagFileReader.onloadend = function (e) {
+	           console.log("scanImage js readScanned readBuffer Ended");
+			  
+             };
+             imagFileReader.readAsArrayBuffer(input.files[0]);
+        return imageDataInBytes;
+      }
+	
+     function readXML(xmlText){
+	     var dataList="";
+	      try {
+                 xmlDoc = $.parseXML(xmlText),
+		         $(xmlDoc).each(function (i, obj) {
                             console.log(i);
                             console.log(obj.documentElement.nodeName);
-
                             $data = $(xmlDoc).find(obj.documentElement.nodeName);
                             $data.each(function () {
-
-                                $.each(this.attributes, function (i, attrib) {
+                              $.each(this.attributes, function (i, attrib) {
                                     var name = attrib.name;
                                     var value = attrib.value;
-
-                                    console.log(name);
+                                     console.log(name);
                                     console.log(value);
-				dataList +=		
-                    '<li class="list-group-item"> <button class="btn btn-info"> ' + name + ' : </button> '+
-                    '<p id="subJ" class=" subTitle">'+  value  + '</p></li> ';
+							     dataList +=		
+								    '<li class="list-group-item"> <button class="btn btn-info"> ' + name + ' : </button> '+
+                                    '<p id="subJ" class=" subTitle">'+  value  + '</p></li> ';
                    
                                 });
                             });
                         });
-                } catch (error) {
+         } catch (error) {
 					console.log("error.message.length "+error.message.length);
 					var breakIt = error.message.length > 30 ? error.message.split('',30): error.message.split(' ');
 					var broken ="";
@@ -166,7 +212,7 @@
 						dataList = '<li class="list-group-item"> <button class="btn btn-info classShort "> ' + breakIt[1] + ' : </button> ';
 					}
                 }
-	  return dataList;
+	     return dataList;
       }
 
     </script>

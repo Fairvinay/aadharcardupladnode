@@ -4,7 +4,8 @@
   "description": "cluster sample",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : " nodemon src/aadharCardIndex.js"
   },
   "keywords": [
     "cluster"
@@ -14,18 +15,22 @@
   "dependencies": {
     "bhim": "^1.0.0",
     "body-parser": "^1.19.1",
+    "bootstrap": "^5.2.0",
     "btoa": "^1.2.1",
     "cheerio": "^1.0.0-rc.10",
     "cluster": "^0.7.7",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
+    "dotenv": "^16.0.2",
     "dynamsoft-javascript-barcode": "^8.8.3",
     "ejs": "^3.1.6",
     "esm": "^3.2.25",
     "express": "^4.17.2",
     "format-utils": "0.0.7",
+    "jquery": "^3.6.1",
     "node-fetch": "^3.2.0",
     "node-localstorage": "^2.2.1",
+    "nodemon": "^2.0.19",
     "request": "^2.88.2"
   }
 }
